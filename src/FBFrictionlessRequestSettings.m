@@ -22,8 +22,8 @@
 //
 @interface FBFrictionlessRequestSettings ()
 
-@property (readwrite, retain) NSArray *     allowedRecipients;
-@property (readwrite, retain) FBRequest*    activeRequest;
+@property (atomic, readwrite, retain) NSArray *     allowedRecipients;
+@property (atomic, readwrite, retain) FBRequest*    activeRequest;
 
 @end
 
@@ -121,11 +121,11 @@
     // a little request bookkeeping
     self.activeRequest = nil;
 
-    int items = [[result objectForKey: @"data"] count];
+    int items = [(NSArray *) [(NSDictionary *)result objectForKey: @"data"] count];
     NSMutableArray* recipients = [[[NSMutableArray alloc] initWithCapacity: items] autorelease];
         
     for (int i = 0; i < items; i++) {
-        [recipients addObject: [[[result objectForKey: @"data"] 
+        [recipients addObject: [(NSDictionary *) [(NSArray *) [(NSDictionary *)result objectForKey: @"data"]
                                  objectAtIndex: i] 
                                 objectForKey: @"recipient_id"]] ;
     }

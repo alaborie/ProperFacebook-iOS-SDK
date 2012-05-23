@@ -211,7 +211,7 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
     }
 
     if ([result isKindOfClass:[NSDictionary class]]) {
-        if ([result objectForKey:@"error"] != nil) {
+        if ([(NSDictionary *)result objectForKey:@"error"] != nil) {
             if (error != nil) {
                 *error = [self formError:kGeneralErrorCode
                                 userInfo:result];
@@ -219,20 +219,20 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
             return nil;
         }
         
-        if ([result objectForKey:@"error_code"] != nil) {
+        if ([(NSDictionary *)result objectForKey:@"error_code"] != nil) {
             if (error != nil) {
-                *error = [self formError:[[result objectForKey:@"error_code"] intValue] userInfo:result];
+                *error = [self formError:[[(NSDictionary *)result objectForKey:@"error_code"] intValue] userInfo:result];
             }
             return nil;
         }
         
-        if ([result objectForKey:@"error_msg"] != nil) {
+        if ([(NSDictionary *)result objectForKey:@"error_msg"] != nil) {
             if (error != nil) {
                 *error = [self formError:kGeneralErrorCode userInfo:result];
             }
         }
         
-        if ([result objectForKey:@"error_reason"] != nil) {
+        if ([(NSDictionary *)result objectForKey:@"error_reason"] != nil) {
             if (error != nil) {
                 *error = [self formError:kGeneralErrorCode userInfo:result];
             }

@@ -50,8 +50,8 @@ static NSMutableCharacterSet *kEscapeChars;
 }
 
 
-@synthesize sortKeys;
-@synthesize humanReadable;
+@synthesize sortKeys = sortKeys;
+@synthesize humanReadable = humanReadable;
 
 /**
  @deprecated This exists in order to provide fragment support in older APIs in one more version.

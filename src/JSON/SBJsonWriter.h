@@ -45,7 +45,7 @@
  JSON with linebreaks after each array value and dictionary key/value pair, indented two
  spaces per nesting level.
  */
-@property BOOL humanReadable;
+@property (atomic) BOOL humanReadable;
 
 /**
  @brief Whether or not to sort the dictionary keys in the output.
@@ -53,7 +53,7 @@
  If this is set to YES, the dictionary keys in the JSON output will be in sorted order.
  (This is useful if you need to compare two structures, for example.) The default is NO.
  */
-@property BOOL sortKeys;
+@property (atomic) BOOL sortKeys;
 
 /**
  @brief Return JSON representation (or fragment) for the given object.
@@ -94,7 +94,8 @@
 @interface SBJsonWriter : SBJsonBase <SBJsonWriter> {
 
 @private
-    BOOL sortKeys, humanReadable;
+    BOOL sortKeys;
+    BOOL humanReadable;
 }
 
 @end

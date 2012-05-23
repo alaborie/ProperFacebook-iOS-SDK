@@ -311,7 +311,7 @@ params   = _params;
         // if we got something usable, copy the ids out and update the cache
         if ([recipients isKindOfClass:[NSArray class]]) { 
             NSMutableArray *ids = [[[NSMutableArray alloc]
-                                    initWithCapacity:[recipients count]]
+                                    initWithCapacity:[(NSArray *)recipients count]]
                                    autorelease];
             for (id recipient in recipients) {
                 NSString *fbid = [NSString stringWithFormat:@"%@", recipient];
